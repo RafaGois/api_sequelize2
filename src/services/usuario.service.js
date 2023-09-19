@@ -1,6 +1,9 @@
 const usuarioRepository = require("../repositories/usuario.repository");
+require("dotenv").config();
+const bcrypy = require("bcrypt");
 
 const create = async function (usuario) {
+    usuario.senha = await bcrypy.hash(usuario.senha, +process.env.SALT)
   const usuarioCriado = await usuarioRepository.create(usuario);
   return usuarioCriado;
 };
