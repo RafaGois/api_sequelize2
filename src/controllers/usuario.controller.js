@@ -4,21 +4,37 @@ const create = async function (req, res, next) {
   try {
     const response = await usuarioService.create(req.body);
     if (response && response.message) {
-      res.send(usuario);
+      throw response; 
     }
+    res.send(response);
   } catch (err) {
-    return next(err)
+    next(err)  
   }
 };
 
-const findAll = async function (req, res) {
-  const usuarios = await usuarioService.findAll();
-  res.send(usuarios);
+const findAll = async function (req, res, next) {
+  try {
+    const response = await usuarioService.findAll();
+    if(response && response.message) {
+      throw response;
+    }
+    res.send(response);
+  } catch(err) {
+    next(err);
+  }
 };
 
-const findByPk = async function (req, res) {
-  const usuario = await usuarioService.findByPk(req.params.id);
-  res.send(usuario);
+const findByPk = async function (req, res,next) {
+  try {
+
+    const response = await usuarioService.findByPk(req.params.id);
+    if(response && response.message) {
+      throw response;
+    } 
+    res.send(response);
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports = {
