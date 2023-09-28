@@ -1,8 +1,14 @@
 const usuarioService = require("../services/usuario.service");
 
-const create = async function (req, res) {
-  const usuario = await usuarioService.create(req.body);
-  res.send(usuario);
+const create = async function (req, res, next) {
+  try {
+    const response = await usuarioService.create(req.body);
+    if (response && response.message) {
+      res.send(usuario);
+    }
+  } catch (err) {
+    return next(err)
+  }
 };
 
 const findAll = async function (req, res) {
