@@ -27,7 +27,9 @@ const encontrarPorWhere = async function (where) {
 };
 
 const deletar = async function (id) {
-  return await Usuario.destroy({where})
+  return await Usuario.destroy({where: {
+    id: id
+  }})
 }
 
 module.exports = {
@@ -36,4 +38,5 @@ module.exports = {
   findAll,
   findByPk,
   encontrarPorWhere,
+  deletar,
 };

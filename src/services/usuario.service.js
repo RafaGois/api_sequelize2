@@ -37,9 +37,19 @@ const findByPk = async function (id) {
   return usuario;
 };
 
+const deletar = async function (id) {
+  const usuario = await usuarioRepository.findByPk(id);
+  if(!usuario) {
+    return createError(404,"Usuário não encontrado.")
+  }
+  await usuarioRepository.deletar(id);
+  return usuario;
+};
+
 module.exports = {
   create,
   atualizar,
   findAll,
   findByPk,
+  deletar,
 };
