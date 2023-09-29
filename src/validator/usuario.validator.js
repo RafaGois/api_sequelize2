@@ -9,6 +9,13 @@ const criar = function () {
   ];
 };
 
+const atualizar = function () {
+  return [
+    body("nome", validatorMessage("Nome")).exists().bail().isString(),
+    param("id", validatorMessage("id")).exists().bail().isInt() 
+  ];
+};
+
 const encontrarPorId = function() {
   return [
     param("id", validatorMessage("id")).exists().bail().isInt(),
@@ -17,5 +24,6 @@ const encontrarPorId = function() {
 
 module.exports = {
     criar,
+    atualizar,
     encontrarPorId,
 }

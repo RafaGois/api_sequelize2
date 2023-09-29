@@ -20,6 +20,27 @@ const create = async function (req, res, next) {
   }
 };
 
+const atualizar = async function (req, res, next) {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw createError(422, { errors: errors.array() });
+    }
+
+    const response = await usuarioService.atualizar({
+      nome: req.body.nome
+    }, req.params.id);
+
+    if(response && response.message) {
+      throw response;
+    }
+
+    res.send(response);
+  } catch (error) {
+    next(error)
+  }
+};
+
 const findAll = async function (req, res, next) {
   try {
     const response = await usuarioService.findAll();
@@ -53,4 +74,5 @@ module.exports = {
   create,
   findAll,
   findByPk,
+  atualizar,
 };

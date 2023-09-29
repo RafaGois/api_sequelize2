@@ -5,6 +5,12 @@ const create = async function (usuario) {
   return await Usuario.create(usuario);
 };
 
+const atualizar = async function(usuario, id) {
+  await Usuario.update(usuario, {
+    where: {id:id}
+  })
+}
+
 const findAll = async function () {
   return await Usuario.findAll();
 };
@@ -20,8 +26,13 @@ const encontrarPorWhere = async function (where) {
   return usuario;
 };
 
+const deletar = async function (id) {
+  return await Usuario.destroy({where})
+}
+
 module.exports = {
   create,
+  atualizar,
   findAll,
   findByPk,
   encontrarPorWhere,

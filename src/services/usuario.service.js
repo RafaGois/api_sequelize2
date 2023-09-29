@@ -13,6 +13,17 @@ const create = async function (usuario) {
   return usuarioCriado;
 };
 
+const atualizar = async function(usuario, id) {
+  const existeUsuario = await usuarioRepository.findByPk(id);
+
+  if(!existeUsuario) {
+    return createError(404, "Usuário não existe.");
+  }
+
+  await usuarioRepository.atualizar(usuario,id);
+  return await usuarioRepository.findByPk(id);
+}
+
 const findAll = async function () {
   const usuarios = await usuarioRepository.findAll();
   return usuarios;
@@ -28,6 +39,7 @@ const findByPk = async function (id) {
 
 module.exports = {
   create,
+  atualizar,
   findAll,
   findByPk,
 };
