@@ -20,17 +20,26 @@ const encontrarPorId = function() {
   return [
     param("id", validatorMessage("id")).exists().bail().isInt(),
   ]
-}
+};
 
 const deletar = function() {
   return [
     param("id", validatorMessage("id")).exists().bail().isInt(),
   ]
-}
+};
+
+const login = function () {
+  return [
+    body("email", validatorMessage("Email")).exists().bail().isString(),
+    body("senha", validatorMessage("Senha")).exists().bail().isString(),
+  ];
+};
 
 module.exports = {
     criar,
     atualizar,
     encontrarPorId,
-    deletar
-}
+    deletar,
+
+    login,
+  }

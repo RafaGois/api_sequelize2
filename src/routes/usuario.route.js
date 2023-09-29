@@ -4,6 +4,7 @@ const usuarioController = require("../controllers/usuario.controller");
 const usuaroValidator = require("../validator/usuario.validator");
 
 router.post("/", usuaroValidator.criar(), usuarioController.create);
+router.post("/login", usuaroValidator.login(), usuarioController.login);
 router.get("/", usuarioController.findAll);
 router.get("/:id", usuaroValidator.encontrarPorId(), usuarioController.findByPk);
 router.put("/:id",usuaroValidator.atualizar(), usuarioController.atualizar );
