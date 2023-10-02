@@ -11,7 +11,7 @@ const atualizar = async function (item, id) {
   });
 };
 
-const encontrar = async function () {
+const encontrarTodos = async function () {
   const itens = await Item.fontAll();
   return itens;
 };
@@ -37,6 +37,7 @@ const deletar = async function (id) {
 module.exports = {
   criar,
   atualizar,
-  encontrar,
+  encontrarTodos,
   encontrarPorId,
+  deletar,
 };
