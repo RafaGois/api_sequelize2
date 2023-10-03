@@ -5,7 +5,7 @@ const criar = function () {
   return [
     body("item_id", validatorMessage("Item")).exists().bail().isInt(),
     body("quantidade", validatorMessage("Quantidade")).exists().bail().isInt(),
-    body("preco", validatorMessage("Preço")).exists().bail().isDecimal(),
+    body("preco", validatorMessage("Preço")).exists().bail().isFloat(),
   ];
 };
 
@@ -17,7 +17,5 @@ const encontrarPorId = function() {
 
 module.exports = {
     criar,
-    atualizar,
     encontrarPorId,
-    deletar,
   }

@@ -1,12 +1,23 @@
-const { Entrada } = require("../database/models/index");
+const { Entrada, Item, Usuario } = require("../database/models/index");
 
-const criar = async function (item) {
-  const itemCriado = await Entrada.create(item);
-  return itemCriado;
+const criar = async function (entrada) {
+  const entradaCriada = await Entrada.create(entrada);
+  return entradaCriada;
 };
 
 const encontrarTodos = async function () {
-  const entradas = await Entrada.findAll();
+  const entradas = await Entrada.findAll({
+    include: [
+      {
+        model: Item,
+        as: "item",
+      },
+      {
+        model: Usuario,
+        as: "usuario",
+      },
+    ],
+  });
   return entradas;
 };
 
@@ -18,10 +29,20 @@ const encontrarPorId = async function (id) {
 const encontrarPorWhere = async function (where) {
   const entrada = await Entrada.findOne({
     where: where,
+
+    include: [
+      {
+        model: Item,
+        as: "item",
+      },
+      {
+        model: Usuario,
+        as: "usuario",
+      },
+    ],
   });
   return entrada;
 };
-
 
 module.exports = {
   criar,
