@@ -1,0 +1,2 @@
+modulo service é onde são colocados os comandos diretos do sequelize, ex Elemento.create, Elemento.findAll.
+
