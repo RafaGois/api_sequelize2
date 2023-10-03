@@ -12,7 +12,7 @@ const atualizar = async function (item, id) {
 };
 
 const encontrarTodos = async function () {
-  const itens = await Item.fontAll();
+  const itens = await Item.findAll();
   return itens;
 };
 

@@ -36,7 +36,7 @@ const deletar = async function (id) {
     return createError(404,"Item não encontrado.")
   }
   await itemRepository.deletar(id);
-  return usuario;
+  return item;
 };
 
 module.exports = {
@@ -45,5 +45,4 @@ module.exports = {
   encontrarTodos,
   encontrarPorId,
   deletar,
-  login
 };

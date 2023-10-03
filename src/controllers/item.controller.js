@@ -21,23 +21,6 @@ const create = async function (req, res, next) {
   }
 };
 
-const login = async function (req,res,next) {
-  try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      throw createError(422, { errors: errors.array() });
-    }
-
-    const response = await itemService.login(req.body);
-    if (response && response.message) {
-      throw response;
-    }
-    res.send(response);
-  } catch (err) {
-    next(err);
-  }
-}
-
 const atualizar = async function (req, res, next) {
   try {
     const errors = validationResult(req);
@@ -59,26 +42,23 @@ const atualizar = async function (req, res, next) {
   }
 };
 
-const findAll = async function (req, res, next) {
+const encontrarTodos = async function (req, res, next) {
   try {
-    const response = await itemService.findAll();
-    if (response && response.message) {
-      throw response;
-    }
+    const response = await itemService.encontrarTodos();
     res.send(response);
   } catch (err) {
     next(err);
   }
 };
 
-const findByPk = async function (req, res, next) {
+const encontrarPorId = async function (req, res, next) {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       throw createError(422, { errors: errors.array() });
     }
 
-    const response = await itemService.findByPk(req.params.id);
+    const response = await itemService.encontrarPorId(req.params.id);
     if (response && response.message) {
       throw response;
     }
@@ -107,9 +87,8 @@ const deletar = async function (req, res, next) {
 
 module.exports = {
   create,
-  findAll,
-  findByPk,
+  encontrarTodos,
+  encontrarPorId,
   atualizar,
   deletar,
-  login,
 };

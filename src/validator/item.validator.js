@@ -31,6 +31,4 @@ module.exports = {
     atualizar,
     encontrarPorId,
     deletar,
-
-    login,
   }
