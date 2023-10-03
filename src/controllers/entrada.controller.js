@@ -14,7 +14,7 @@ const criar = async function (req, res, next) {
       quantidade: req.body.quantidade,
       usuario_id: req.usuario_id,
       preco: req.body.preco,
-      item_id: req.body.preco,
+      item_id: req.body.id,
     });
 
     if (response && response.message) {

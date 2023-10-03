@@ -3,9 +3,9 @@ const itemRepository = require("../repositories/item.repository");
 const createError = require("http-errors");
 
 const criar = async function (entrada) {
+  console.log(entrada);
   const entradaCriada = await entradaRepository.criar(entrada);
   const item = await itemRepository.encontrarPorId(entrada.item_id);
-
   if(!item) {
     return createError(404,"Item não existe, entrada inválida.")
   }

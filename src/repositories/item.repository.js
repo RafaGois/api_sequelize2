@@ -39,5 +39,6 @@ module.exports = {
   atualizar,
   encontrarTodos,
   encontrarPorId,
+  encontrarPorWhere,
   deletar,
 };
