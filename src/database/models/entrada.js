@@ -2,7 +2,6 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Entrada extends Model {
-    
     static associate(models) {
       Entrada.belongsTo(models.Usuario, {
         foreignKey: "usuario_id",
@@ -12,12 +11,16 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "item_id",
         as: "item",
       });
+      Entrada.belongsTo(models.Fornecedor, {
+        foreignKey: "fornecedor_id",
+        as: "fornecedor",
+      });
     }
   }
   Entrada.init(
     {
       quantidade: DataTypes.INTEGER,
-      preco: DataTypes.DECIMAL(10,2),
+      preco: DataTypes.DECIMAL(10, 2),
     },
     {
       sequelize,

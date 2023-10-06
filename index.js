@@ -7,6 +7,7 @@ const usuarioRoute = require("./src/routes/usuario.route");
 const entradaRoute = require("./src/routes/entrada.route");
 const saidaRoute = require("./src/routes/saida.route");
 const itemReportRoute = require("./src/routes/item-report.route");
+const fornecedorRoute = require("./src/routes/fornecedor.route");
 
 const handle404Error = require("./src/middlewares/handle404Error");
 const handleError = require("./src/middlewares/handleError");
@@ -19,6 +20,7 @@ app.use("/api/usuarios/", usuarioRoute);
 app.use("/api/entradas/", entradaRoute);
 app.use("/api/saidas/", saidaRoute);
 app.use("/api/item-report/", itemReportRoute);
+app.use("/api/fornecedores/", fornecedorRoute);
 app.use(handle404Error);//caso nao encontre nenhuma rota
 app.use(handleError);//tem q ser o ultimo
 
