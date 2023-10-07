@@ -1,4 +1,4 @@
-const { Entrada, Item, Usuario } = require("../database/models/index");
+const { Entrada, Item, Usuario, Fornecedor } = require("../database/models/index");
 
 const criar = async function (entrada) {
   const entradaCriada = await Entrada.create(entrada);
@@ -16,6 +16,10 @@ const encontrarTodos = async function () {
         model: Usuario,
         as: "usuario",
       },
+      {
+        model: Fornecedor,
+        as: "fornecedor",
+      }
     ],
   });
   return entradas;
@@ -39,6 +43,10 @@ const encontrarPorWhere = async function (where) {
         model: Usuario,
         as: "usuario",
       },
+      {
+        model: Fornecedor,
+        as: "fornecedor",
+      }
     ],
   });
   return entrada;

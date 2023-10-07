@@ -22,7 +22,7 @@ const encontrarTodos = async function () {
 };
 
 const encontrarPorId = async function (id) {
-  const entrada = await entradaRepository.encontrarPorId(id);
+  const entrada = await entradaRepository.encontrarPorWhere({id: id});
   if (!entrada) {
     return createError(404, "Item não encontrado.");
   }

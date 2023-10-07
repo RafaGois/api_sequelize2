@@ -23,7 +23,7 @@ const encontrarTodos = async function () {
 };
 
 const encontrarPorId = async function (id) {
-  const fornecedor = await fornecedorRepository.encontrarPorId(id);
+  const fornecedor = await fornecedorRepository.encontrarUmPorWhere(id);
   if (!fornecedor) {
     return createError(404, "Fornecedor não existe.");
   }
